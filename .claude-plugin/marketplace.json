@@ -1,0 +1,16 @@
+{
+  "name": "fileshelf-marketplace",
+  "owner": {
+    "name": "FileShelf contributors"
+  },
+  "plugins": [
+    {
+      "name": "fileshelf",
+      "source": "./plugins/fileshelf",
+      "description": "Find files Claude shared in this session and recover available copies."
+    }
+  ],
+  "metadata": {
+    "description": "FileShelf searches for files shared earlier in a local Claude Code conversation."
+  }
+}
