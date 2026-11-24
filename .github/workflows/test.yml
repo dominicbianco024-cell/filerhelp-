@@ -1,0 +1,20 @@
+name: Test FileShelf
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --global @anthropic-ai/claude-code@2.1.331
+      - run: node --test tests/recovery.test.mjs
+      - run: claude plugin validate .claude-plugin/marketplace.json --strict
+      - run: claude plugin validate plugins/fileshelf --strict
+      - run: claude plugin test plugins/fileshelf
